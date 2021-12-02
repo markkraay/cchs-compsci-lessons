@@ -8,7 +8,7 @@
 
 # Downloads
 pip3 install selenium
-pip3 instll webdriver_manager
+pip3 install webdriver_manager
 curl https://chromedriver.storage.googleapis.com/97.0.4692.20/chromedriver_mac64.zip -o chromedriver.zip
 unzip chromedriver.zip
 rm chromedriver.zip
