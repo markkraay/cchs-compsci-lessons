@@ -8,11 +8,21 @@ from webdriver_manager.chrome import ChromeDriverManager
 # https://www.selenium.dev/documentation/webdriver/web_element/
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-driver.get("https://finance.yahoo.com/gainers/")
+driver.get("https://www.amazon.com/Jabra-Elite-75t-Earbuds-Comfortable/dp/B07X9VG6ZJ?ref_=Oct_DLandingS_D_3d85a924_60&smid=ATVPDKIKX0DER")
 stocks = []
 for i in range (1, 10):
     stock = driver.find_element(By.XPATH, f'/html/body/div[1]/div/div/div[1]/div/div[2]/div/div/div[6]/div/div/section/div/div[2]/div[1]/table/tbody/tr[{i}]/td[2]').text
-    price = driver.find_element(By.XPATH, f'//*[@id="scr-res-table"]/div[1]/table/tbody/tr[{i}]/td[3]/fin-streamer').text
+    price = int(driver.find_element(By.XPATH, f'//*[@id="scr-res-table"]/div[1]/table/tbody/tr[{i}]/td[3]/fin-streamer').text)
     stocks.append({'stock': stock, 'price': price})
 print(stocks)
+
+# Finding the max
+max_stock = {'price': 0}
+for pair in stocks:
+    if pair['price'] > max_stock['price']:
+        max_stock = pair
+print(max_stock)
+
+
+
 
